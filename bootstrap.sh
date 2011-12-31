@@ -13,7 +13,7 @@ if [ -f "/etc/SuSE-release" ]; then
   esac
 fi
 
-bootstraps="base_packages git rvm_setup ${rvm_ruby} chef chef_solo bundler"
+bootstraps="base_packages rvm_setup ${rvm_ruby} chef chef_solo bundler"
 for i in $bootstraps; do source bootstraps/$i.sh; done
 
 # Run bootstrap in tmp directory

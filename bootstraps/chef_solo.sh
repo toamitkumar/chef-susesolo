@@ -6,14 +6,19 @@ function bootstrap_chef_solo {
   if [ -e /etc/chef ]; then
     echo "== Skipped, already configured"
   else
-    mkdir -p /etc/chef
+    FILE_CACHE_PATH="/var/chef-solo"
+    CONFIG_PATH="/etc/chef"
+
+    mkdir -m 0775 -p $CONFIG_PATH
+
     (
       cat <<EOP
-file_cache_path "/tmp/chef-solo"
-cookbook_path   ["/tmp/chef-solo/cookbooks", "/tmp/chef-solo/site-cookbooks"]
-role_path       "/tmp/chef-solo/roles"
+        file_cache_path "$FILE_CACHE_PATH"
+        cookbook_path   ["$FILE_CACHE_PATH/cookbooks"]
+        role_path       "$FILE_CACHE_PATH/roles"
 EOP
     ) > /etc/chef/solo.rb
+
   fi
   echo "= Chef-Solo configured"
 
