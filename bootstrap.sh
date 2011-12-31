@@ -8,12 +8,12 @@ if [ -f "/etc/SuSE-release" ]; then
       rvm_ruby="rvm_ree"
     ;;
     11)
-      rvm_ruby="rvm_ruby_1.9.2-p0"
+      rvm_ruby="rvm_ruby_1.9.3-p0"
     ;;
   esac
 fi
 
-bootstraps="base_packages git rvm_system_wide rvm_profile_suse ${rvm_ruby} chef chef_solo"
+bootstraps="base_packages git rvm_setup ${rvm_ruby} chef chef_solo bundler"
 for i in $bootstraps; do source bootstraps/$i.sh; done
 
 # Run bootstrap in tmp directory

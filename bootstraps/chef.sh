@@ -7,7 +7,7 @@ function bootstrap_chef {
   if [ -n "`gem list | grep chef`" ]; then
     echo "== Skipped, already installed"
   else
-    gem install chef
+    gem install chef ohai
   fi
   echo "== Version: $(chef-client --version)"
   echo "= Chef Installed"
