@@ -46,10 +46,10 @@ config_path = '/etc/chef'
 
 namespace :chef do
   desc "Bootstrap a SUSE server and kick-start Chef-Solo"
-  task :bootstrap, roles: :target do
-    sudo "git clone git@github.com:toamitkumar/chef-susesolo.git #{file_cache_path}"
+  task :bootstrap, :roles => :target do
+    sudo "git clone git://github.com/toamitkumar/chef-susesolo.git #{file_cache_path}"
     run "cd #{file_cache_path}"
-    sudo "source bootstrap.sh"
+    run "source bootstrap.sh"
   end
 
 
@@ -69,6 +69,15 @@ namespace :chef do
     run "chef-solo -c #{config_path}/solo.rb -j #{dna_path}/#{node}.json -l debug"
 
     exit # subsequent args are not tasks to be run
+  end
+
+  desc "Installs public keys into the specified user"
+  task :install_key, :roles => :target do
+    run "mkdir -p ~/.ssh"
+    lines = File.read(File.expand_path('~/.ssh/id_rsa.pub'))
+    run "echo #{lines} | tee -a ~/.ssh/authorized_keys"
+    run "chmod 700 ~/.ssh"
+    run "chmod 600 ~/.ssh/authorized_keys"
   end
 
 end

@@ -3,7 +3,7 @@
 function bootstrap_rvm_setup {
 
   echo "= RVM Installing"
-  if [ -e $HOME/.rvm ]; then
+  if [ -e $HOME/.rvm]; then
     echo "== Skipped, RVM already installed"
   else
     echo "= From sources"
@@ -13,6 +13,9 @@ function bootstrap_rvm_setup {
     echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' | tee -a "$HOME/.bash_profile"
 
     echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.' | tee -a "$HOME/.bashrc"
+
+    source "$HOME/.bash_profile"
+    source "$HOME/.bashrc"
   fi
   echo "= RVM Installed"
 
