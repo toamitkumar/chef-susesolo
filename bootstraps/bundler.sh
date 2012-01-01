@@ -3,7 +3,6 @@
 function bootstrap_bundler {
 
   echo "= Bundler Install"
-  rvm --create @global
   if [ -n "`gem list | grep bundler`" ]; then
     echo "== Skipped, already installed"
   else
