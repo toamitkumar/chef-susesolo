@@ -8,7 +8,7 @@ if [ -f "/etc/SuSE-release" ]; then
       rvm_ruby="rvm_ree"
     ;;
     11)
-      rvm_ruby="rvm_ruby_1.9.3"
+      rvm_ruby="rvm_ruby_1_9_3_p0"
     ;;
   esac
 fi

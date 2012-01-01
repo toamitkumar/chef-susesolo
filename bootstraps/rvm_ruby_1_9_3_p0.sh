@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function bootstrap_rvm_ruby_1.9.3 {
+function bootstrap_rvm_ruby_1_9_3_p0 {
 
   echo "= Ruby 1.9.3-p0 Install"
   if [ -n "`rvm list | grep 1.9.3-p0`" ]; then
