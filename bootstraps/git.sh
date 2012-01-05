@@ -7,14 +7,14 @@ function bootstrap_git {
     echo "== Skipped, already installed"
   else
     echo "== From sources"
-    wget http://kernel.org/pub/software/scm/git/git-1.7.3.2.tar.bz2
-    tar xvjf git-1.7.3.2.tar.bz2
-    pushd git-1.7.3.2
-      ./configure --without-python
+    cd /tmp
+    wget http://git-core.googlecode.com/files/git-1.7.8.2.tar.gz
+    tar xvf git-1.7.8.2.tar.gz
+    pushd git-1.7.8.2
+      ./configure
       make && make install
     popd
   fi
   echo "== Version: $(`git --version`)"
   echo "= Git Installed"
-
 }
