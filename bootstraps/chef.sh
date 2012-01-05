@@ -3,7 +3,6 @@
 function bootstrap_chef {
 
   echo "= Chef Install"
-  rvm --create @global
   if [ -n "`gem list | grep chef`" ]; then
     echo "== Skipped, already installed"
   else

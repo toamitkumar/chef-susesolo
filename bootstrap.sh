@@ -5,15 +5,15 @@ if [ -f "/etc/SuSE-release" ]; then
   VERSION=`cat /etc/SuSE-release | grep VERSION | sed s/VERSION\ =\ //`
   case "$VERSION" in
     10)
-      rvm_ruby="rvm_ree"
+      ruby_version="ree"
     ;;
     11)
-      rvm_ruby="rvm_ruby_1_9_3_p0"
+      ruby_version="ruby_1_9_3_p0"
     ;;
   esac
 fi
 
-bootstraps="base_packages rvm_setup ${rvm_ruby} chef chef_solo bundler"
+bootstraps="base_packages ${ruby_version} chef chef_solo bundler"
 for i in $bootstraps; do source bootstraps/$i.sh; done
 
 # Run bootstrap in tmp directory
